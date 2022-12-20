@@ -2,7 +2,7 @@
 int main(){
 	int numero, soma, i;
 	
-	for(i=1; i<=5; i++){
+	for(i=1; i<=50; i++){
 		printf("Digite um numero: ", numero);
 		scanf("%d", &numero);
 		
