@@ -1,7 +1,7 @@
 #include <stdio.h> 
 
 int main(){
-	float nota_f, maior=0, menor=0, i=0, cont=0, soma=0, media=0;
+	float nota_f, maior=0, menor=0, cont=0, soma=0, media=0;
 	
 	printf("Digite a media final do aluno: ");
 	scanf("%f", &nota_f);
@@ -16,7 +16,7 @@ int main(){
 		if(nota_f<menor){
 			menor = nota_f;
 		}
-		if(i==0){
+		if(cont==1){
 		    menor = nota_f;
 		}
 		printf("Digite a media final do aluno: ");
@@ -29,4 +29,3 @@ int main(){
 	printf("\nMenor nota: %.2f", menor);
 	printf("\nMedia: %.2f", media);
 }
-
