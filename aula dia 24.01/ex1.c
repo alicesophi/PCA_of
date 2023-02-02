@@ -1,21 +1,26 @@
 #include <stdio.h>
+#define TAMANHO 100
+
+void imprimir_inversa(int v[], int tamanho);
+
 int main(){
-	int vetor[100];
-	int i=0, n;
+	int v[TAMANHO];
+	int i, n;
 	
 	printf("Digite a quantidade da sequencia de numeros desejada: ");
 	scanf("%d", &n);
-	printf("Digite %d elemntos: ",n );
-	
+
 	for (i=0; i < n; i++){
-		scanf("%d", &vetor[i]);
+	    printf("Digite o %d numero: ", i+1);
+		scanf("%d", &v[i]);
 	}
-	
-	printf("Ordem inversa: ");
-	for (i = n-1; i >=0; i--){
-		printf("%d", &vetor[i]);
-		
-	}
-	printf("\n");
+	imprimir_inversa(v, n);
 	return 0;
+}
+
+void imprimir_inversa(int v[], int tamanho){
+    int i;
+    for(i=tamanho-1; i>=0; i--){
+        printf("%d\n", v[i]);
+    }
 }
