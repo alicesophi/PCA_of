@@ -1,25 +1,43 @@
-void multixescalar(int a[3][3], int escalar, int out[3][3]);
+#include <stdio.h>
 
-int main()
-{
-    int a[3][3]={{5,5,5},{4,4,4},{3,3,3,}};
-    int resul[3][3];
-    int fila, coluna;
-    multixescalar(a,2, resul);
-    for (fila=0;fila<3;fila++){
-        printf ("\n");
-        for (coluna=0;coluna<3; coluna++){
-            printf (" %d", resul[fila][coluna]);
+
+void multiplicar_m(int m1[3][3],int escalar,int saida[3][3]);
+
+int main(){
+    int m1[3][3];
+    int i, j, k, result[3][3];
+   
+    
+    printf("Digite valor para os elementos da matriz\n");
+    
+    for(i=0; i<3; i++){
+        for(j=0; j<3; j++){
+            printf("Matriz 1 - Elemento[%d][%d] = ", i, j);
+            scanf("%d", &m1[i][j]);
+            
+            //printf("%d", result[i][j]);
+            
+            
         }
     }
+    
+    printf("Digite um número que vc deseja multiplicar pelos elementos: ");
+    scanf("%d", &k);
+    
+    multiplicar_m(m1, k, result);
+    
     return 0;
 }
 
-void multixescalar(int a[3][3], int escalar, int out[3][3]){
-    int fila, coluna;
-    for (fila=0;fila<3;fila++){
-        for (coluna=0;coluna<3; coluna++){
-            out[fila][coluna]= a[fila][coluna]*escalar;
+void multiplicar_m(int m1[3][3],int escalar,int saida[3][3]){
+    int i, j;
+    
+    for(i=0; i<3; i++){
+        printf("\n");
+        for(j=0; j<3; j++){
+            saida[i][j] = m1[i][j] * escalar;
+            printf("%d ", saida[i][j]);
+
         }
     }
 }
