@@ -1,34 +1,30 @@
 #include <stdio.h>
-#include<string.h>
-#define tamanho 3
-#define DISTANCE 1000
+#define tam 3
 
 int main(){
-char modelo[tamanho][20];
-float consumo[tamanho];
-float min_consumo = 99999999;
-int posmaiseconomico = 0;
-int i;
+  char carros[tam][100];
+  float consumo[tam];
+  int menorConsumo = 0;
+  int i=0;
+  
+  for(i=0; i<tam; i++){
+    printf("Digite o %d carro: ", i+1);
+    scanf("%s", carros[i]);
 
-for(i=0; i<tamanho; i++){
-    printf("Digite o modelo %d: ", i+1);
-    scanf("%s", modelo[i]);
-
-    printf("Digite o consumo do carro %d: ", i+1);
+    printf("Quantos quilometros o carro %s faz com um litro de combustivel? ", carros[i]);
     scanf("%f", &consumo[i]);
 
-    if(consumo[i] < min_consumo){
-        min_consumo = consumo[i];
-        posmaiseconomico = i;
-    }
-}
+    if(consumo[i] > consumo[menorConsumo]){
+      menorConsumo = i;
+    }    
+  }
 
-printf("O carro mais economico eh: %s\n", modelo[posmaiseconomico]);
+  printf("\nO carro mais economico eh o %s, que faz %.2f km/l", carros[menorConsumo], consumo[menorConsumo]);
 
-for(i=0; i<tamanho; i++){
-    printf("O carro %s consome em 1000km %.3f litros\n", modelo[i], DISTANCE/consumo[i]);
-   
-}
+  printf("\n\nConsumo para percorrer 1000km:\n");
+  for(i=0; i<tam; i++){
+    printf("%s: %.2f litros\n", carros[i], 1000.0/consumo[i]);
+  }
 
-return 0;
+  return 0;
 }
