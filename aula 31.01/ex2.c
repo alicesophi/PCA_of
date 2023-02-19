@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define tam 3
+#define tam 5
 
 int main(){
   char carros[tam][100];
