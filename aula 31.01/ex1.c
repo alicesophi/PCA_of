@@ -7,103 +7,102 @@
 
 #include <stdio.h>
 
-void imprimir_tras_p_frente();
-void imprimir_sem_vogais();
-void imprimir_maiusculo();
-void n_caracteres();
-void tira_caractere();
-
+void imprime_reverso(char *string);
+void imprime_semvogais(char *string);
+void imprime_maiusculo(char *string);
+void imprime_Ncaracters(char *string, char caractere);
+void tira_caractere(char *string, char caractere);
 
 int main(){
-    imprimir_maiusculo();
-    imprimir_tras_p_frente();
-    imprimir_sem_vogais();
-    n_caracteres();
-    tira_caractere();
+    char string[100];
+    char c;
+    int i;
+   
+    printf("Digite um palava: ");
+    scanf("%s", string);
+   
+    imprime_reverso(string);
+    imprime_semvogais(string);
+    
+    char string_copy[100]; // criar uma cópia da string original
+    for (i = 0; string[i] != '\0'; i++) {
+        string_copy[i] = string[i];
+    }
+    
+    imprime_maiusculo(string_copy); // passar a cópia para a função
+ 
+    printf("Digite um caractere: ");
+    scanf(" %c", &c);
+   
+    imprime_Ncaracters(string, c);
+    tira_caractere(string, c);
+   
     return 0;
-}
+}  
 
-void imprimir_tras_p_frente(){
-    char palavra[100];
-    int i, tamanho;
-    
-    printf("Digite uma palavra para imprimi-la ao contrario: ");
-    scanf("%s", &palavra);
-    
-    tamanho = strlen(palavra);
-    
-    printf("A palavra ao contrario eh:\n");
-    for(i=tamanho-1; i>=0; i--){
-        printf(" %c", palavra[i]);
+
+void imprime_reverso(char *string){
+    int tamanho = 0, i=0;
+   
+    for(i=0; string[i] != '\0'; i++){
+        tamanho++;
+    }
+   
+    for(i= tamanho - 1; i >=0; i--){
+        printf("%c", string[i]);
     }
     printf("\n");
 }
 
-void imprimir_sem_vogais(){
-    char frase[100];
-    int i, j = 0;
-    
-    printf("Digite uma frase: ");
-    scanf("%s", frase);
- 
-    for(i=0; frase[i]!='\0'; i++){
-        if(frase[i] != 'a' && frase[i] != 'e' && frase[i] != 'i' && frase[i] != 'o' && frase[i] != 'u' && frase[i] != 'A' && frase[i] != 'E' && frase[i] != 'I' && frase[i] != 'O' && frase[i] != 'U'){
-            frase[j++] = frase[i];
+void imprime_semvogais(char *string){
+    int i=0;
+   
+    while(string[i] != '\0'){
+        if(string[i] != 'a' && string[i] != 'e' && string[i] != 'i' && string[i] != 'o' && string[i] != 'u' &&
+            string[i] != 'A' && string[i] != 'E' && string[i] != 'I' && string[i] != 'O' && string[i] != 'U'){
+        printf("%c", string[i]);
+            }
+        i++;      
+    }
+    printf("\n");
+}
+
+void imprime_maiusculo(char *string){
+    int i = 0;
+
+    while(string[i] != '\0'){
+        if((string[i] >= 'a') && (string[i] <='z')){
+            string[i] -= 32;
+           
         }
+        i++;
     }
-    frase[j] = '\0';
-    
-    printf("Frase sem vogais: %s\n", frase);
+    printf("%s\n", string);
 }
 
-void imprimir_maiusculo(){
-    char palavra[100];
-    char i;
-    
-    printf("Digite uma palavra para imprimi-la em maiusculo: ");
-    scanf("%s", palavra);
-    
-    for(i=0; palavra[i] != '\0'; i++){
-       if((palavra[i] >= 'a') && (palavra[i] <= 'z')){
-        palavra[i] = palavra[i] - ('a' - 'A'); 
-    }
-    
-} 
-    
-    printf("A palavra em maiúsculo eh: %s\n", palavra);
-    
-}
-
-void n_caracteres(){
-    char palavra[100];
-    char c;
-    int count=0;
-    printf("Entre com a palavra: ");
-    scanf("%s", palavra);
-    printf("Entre com o caractere: ");
-    scanf(" %c", &c);
-    for (int i = 0; palavra[i] != '\0'; i++) {
-        if (palavra[i] == c) {
+void imprime_Ncaracters(char *string, char caractere){
+    int i=0, count=0;
+   
+    while(string[i] != '\0'){
+        if(caractere == string[i]){
             count++;
         }
+        i++;
     }
-    printf("'%c' apareceu %d vez em '%s'\n", c, count, palavra);
+    printf("'%c' apareceu %d vez em '%s'\n", caractere, count, string);
+    
 }
 
-void tira_caractere(){
-    char palavra[100];
-    char c;
-    int ler = 0, escrever = 0;
-    printf("Enter a palavra: ");
-    scanf("%s", palavra);
-    printf("qual caractere vc deseja remover:: ");
-    scanf(" %c", &c);
-    while (palavra[ler] != '\0') {
-        if (palavra[ler] != c) {
-            palavra[escrever++] = palavra[ler];
+void tira_caractere(char *string, char caractere){
+    int i=0, j=0;
+   
+    while(string[i] != '\0'){
+        if(caractere != string[i]){
+            string[j] = string[i];
+            j++;
         }
-        ler++;
+        i++;
     }
-    palavra[ler] = '\0';
-    printf("Result: %s\n", palavra);
-}
+    string[j] = '\0';
+    printf("%s\n", string);  
+} 
