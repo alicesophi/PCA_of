@@ -1,29 +1,26 @@
 #include <stdio.h>
-
-void codificaCesar(char* str);
-
-int main() {
-    char str[100];
-    printf("Digite a string a ser codificada: ");
-    scanf("%[^\n]", str);
-
-    codificaCesar(str);
-
-    printf("String codificada: %s\n", str);
-
-    return 0;
-}
-
-void codificaCesar(char* str) {
-    int i = 0;
-    while (str[i] != '\0') {
-        if (str[i] >= 'A' && str[i] <= 'Z') {
-            str[i] = ((str[i] - 'A' + 3) % 26) + 'A';
+int main(){
+	char string[200];
+	char string_codificada[200];
+	int i, chave = 3;
+	
+	printf("Digite uma frase: ");
+	scanf("%s", string);
+	
+	while(string[i] != '\0'){
+		if(string[i] >= 'a' && string[i]<= 'z'){
+			string_codificada[i] = ((string[i] - 'a' + chave) % 26) + 'A';
+		}
+		else if(string[i] >= 'A' && string[i] <= 'Z'){
+            string_codificada[i] = ((string[i] - 'A' + chave) % 26) + 'A';
         }
-        else if (str[i] >= 'a' && str[i] <= 'z') {
-            str[i] = ((str[i] - 'a' + 3) % 26) + 'a';
-        }
-        i++;
-    }
+		else{
+			string_codificada[i] = string[i];
+		}
+		i++;
+ 	}
+ 	string_codificada[i] = '\0';
+ 	
+ 	printf("Nova string: %s\n", string_codificada);
+ 	return 0 ;
 }
-
