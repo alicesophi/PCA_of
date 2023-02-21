@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void eh_viciado(lados[]);
+void eh_viciado(int lados[]);
 
 int main(){
 	int lados[6];
@@ -23,7 +23,7 @@ int main(){
 	return 0;
 }
 
-void eh_viciado(lados[]){
+void eh_viciado(int lados[]){
 	int i, soma=0;
 	float freq_esperada=0;
 	
@@ -38,6 +38,7 @@ void eh_viciado(lados[]){
 	for(i=1; i<=6; i++){
 		if(lados[i] >= freq_esperada*1.5){
 			printf("O dado eh viciado na face %d", i);
+			return;
 		}
 	}
 	printf("O dado nao eh viciado");
