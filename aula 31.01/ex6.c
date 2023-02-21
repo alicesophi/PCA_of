@@ -1,43 +1,32 @@
+/*Faça um programa que, dada uma string, diga se ela e um palíndromo ou não. Lembrando que um palíndromo e uma palavra que tenha a propriedade 
+de poder ser lida tanto da direita para a esquerda como da esquerda para a direita. Exemplo: ovo, arara, Anotaram a data da maratona.*/
+
 #include <stdio.h>
+#include <string.h>
 
-int main() {
-    char str[100];
-    int i, j, len, eh_palindromo;
+int main(){
+	char string[100];
+	int i=0, tam, diferentes=0;
+	
+	printf("Digite uma palavra/frase: ");
+	scanf("%s", string);
+	
+	tam = strlen(string);
+	tam--;
 
-    printf("Digite uma string: ");
-    i = 0;
-    do {
-        str[i] = getchar();
-    } while (str[i++] != '\n');
-    str[i - 1] = '\0';
+	while(tam >= i){
+		if(string[i] != string[tam]){
+			diferentes++;
+		}
+		i++;
+		tam--;
+		
+	}
 
-    char cleanStr[100];
-    j = 0;
-    for (i = 0; str[i] != '\0'; i++) {
-        if (str[i] >= 'A' && str[i] <= 'Z') {
-            cleanStr[j] = str[i] - 'A' + 'a'; 
-            j++;
-        } else if (str[i] >= 'a' && str[i] <= 'z') {
-            cleanStr[j] = str[i];
-            j++;
-        }
-    }
-    cleanStr[j] = '\0';
-    len = j;
-
-    eh_palindromo = 1;
-    for (i = 0; i < len / 2; i++) {
-        if (cleanStr[i] != cleanStr[len - i - 1]) {
-            eh_palindromo = 0;
-            break;
-        }
-    }
-
-    if (eh_palindromo) {
-        printf("%s é um palíndromo!\n", str);
-    } else {
-        printf("%s não é um palíndromo.\n", str);
-    }
-
-    return 0;
+	if(diferentes==0){
+		printf("Eh palindroma");
+	}
+	else{
+		printf("Nao eh palindroma");
+	}
 }
