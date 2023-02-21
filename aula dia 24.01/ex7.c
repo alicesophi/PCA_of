@@ -1,28 +1,45 @@
 #include <stdio.h>
-#include <math.h>
+
+void eh_viciado(lados[]);
 
 int main(){
-    int i, n, ocorre[6], lado;
-    
-    printf("Digite quantas vezes o dado foi lancado: ");
-    scanf("%d", &n);
-    
-    for(i = 1; i <= 6; i++)	{
-	    ocorre[i] = 0;	//como eh o dado
+	int lados[6];
+	int i, qt_lancamentos, face;
+	
+	printf("Quantos lancamentos voce deseja fazer: ");
+	scanf("%d", &qt_lancamentos);
+	
+	for(i=1; i<=6; i++){
+		lados[i] = 0;
+	}
+	for(i = 0; i<qt_lancamentos; i++){
+		printf("Digite a face do lancamento %d: ", i+1);
+		scanf("%d", &face);
+		lados[face]++;
 	}
 	
-    for(i=1; i<=n; i++){ //entrada dos valores do dado
-        printf("Digite o numero da face: ");
-        scanf("%d", &lado);
-        ocorre[lado]++; //incremento de vetor, dos nº da face
-        
-    }
-    
-    for(i=1; i<=6; i++){ //contagem das faces
-        if (ocorre[i] != 0){ //se o vetor for diferente de 0:
-            printf("A face %d caiu %d vezes.\n", i, ocorre[i]);
-        }
-    }
-    
-   return 0;
+	eh_viciado(lados);
+	
+	return 0;
 }
+
+void eh_viciado(lados[]){
+	int i, soma=0;
+	float freq_esperada=0;
+	
+	for(i=1; i<=6; i++){
+		if(lados[i] != 0){
+			printf("A face %d caiu %d vez/vezes", i, lados[i]);
+		}
+		soma += lados[i];
+	}
+	freq_esperada = soma/6.0;
+	
+	for(i=1; i<=6; i++){
+		if(lados[i] >= freq_esperada*1.5){
+			printf("O dado eh viciado na face %d", i);
+		}
+	}
+	printf("O dado nao eh viciado");
+}
+
