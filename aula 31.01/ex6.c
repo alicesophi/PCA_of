@@ -1,32 +1,31 @@
-/*Faça um programa que, dada uma string, diga se ela e um palíndromo ou não. Lembrando que um palíndromo e uma palavra que tenha a propriedade 
-de poder ser lida tanto da direita para a esquerda como da esquerda para a direita. Exemplo: ovo, arara, Anotaram a data da maratona.*/
-
 #include <stdio.h>
 #include <string.h>
 
 int main(){
 	char string[100];
-	int i=0, tam, diferentes=0;
+	int i, j, diferentes=0;
 	
-	printf("Digite uma palavra/frase: ");
+	printf("Digite a palavra/frase: ");
 	scanf("%s", string);
 	
-	tam = strlen(string);
-	tam--;
-
-	while(tam >= i){
-		if(string[i] != string[tam]){
+	j = strlen(string);
+	j--;
+	
+	while(j>=i){
+		if(string[i] != string[j]){
 			diferentes++;
 		}
 		i++;
-		tam--;
-		
+		j--;
 	}
-
-	if(diferentes==0){
-		printf("Eh palindroma");
+	
+	if(diferentes == 0){
+		printf("Eh um palindromo");
 	}
+	
 	else{
-		printf("Nao eh palindroma");
+		printf("Nao eh um palindromo");
 	}
+	
+	return 0;
 }
