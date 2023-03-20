@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void ordenar_valores(int *v1, int *v2, int *v3);
+int ordenar_valores(int *v1, int *v2, int *v3);
 
 int main(){
 	int *x;
@@ -9,6 +9,7 @@ int main(){
 	int a;
 	int b;
 	int c;
+	int func;
 	
 	x = &a;
 	y = &b;
@@ -24,47 +25,59 @@ int main(){
 	printf("Digite o valor 3: ");
 	scanf("%d", z); 
 	
-	ordenar_valores(x, y, z);
+	func = ordenar_valores(x, y, z);
+	printf("Valores ordenados: %d, %d, %d.\n", *x, *y, *z);
 
 }
 
-void ordenar_valores(int *v1, int *v2,int *v3){
+int ordenar_valores(int *v1, int *v2,int *v3){
 	int a=*v1;
 	int b=*v2;
 	int c=*v3;
 	
 	if(a == b && b == c){
-		printf("0\n");
+		printf("Os valores sao iguais.\n");
+		return 0;
 	}
-	
-	if(a != b && a != c && b != c){
-		printf("1\n");
 
 	if(a > b){
 		if(b > c){
-			printf("%d, %d, %d", c, b, a);
+			*v1 = c;
+			*v2= b;
+			*v3 = a;
 		}
 		else{
 			if(a > c){
-				printf("%d, %d, %d", b, c, a);
+				*v1 = b;
+				*v2= c;
+				*v3 = a;
 			}	
 			else{
-				printf("%d, %d, %d", b, a, c);	
+				*v1 = b;
+				*v2= a;
+				*v3 = c;
 			}
 		}
 	}
 	else{
 		if(b > c){
 			if(a > c){
-				printf("%d, %d, %d", c, a, b);
+				*v1 = c;
+				*v2= a;
+				*v3 = b;
 			}
 			else{
-				printf("%d, %d, %d", a, c, b);
+				*v1 = a;
+				*v2= c;
+				*v3 = b;
 			}
 		}else{
-			printf("%d, %d, %d", a, b, c);
+				*v1 = a;
+				*v2= b;
+				*v3 = c;
 			}
 		}
+		return 1;
 	}
-}
+
 	
