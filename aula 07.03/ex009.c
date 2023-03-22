@@ -1,35 +1,33 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 
-int* ret_vetor(char* string, char letra, int *qtd_letras);
+void retorna_vetor(char *str, char let, int *pos, int *cont);
 
 int main(){
-    char str[5] = "luana";
-    char letra = 'a';
-    int *posicoes, tamanho_vetor, i;
+	char str[10] = "banana";
+	char letra = 'a';
+	int pos[10], cont, i;
+	
+	retorna_vetor(str, letra, pos, &cont);	
+    
+	printf("Posicoes: ");
+	for(i=0; i<cont; i++){
+		printf("v[%d] ", *(pos+i));
+	}
+	
+	printf("\nQuantas vezes a letra se repetiu na string: %d", cont);
 
-    posicoes = ret_vetor(str, letra, &tamanho_vetor);
-
-    printf("Posicoes da letra %c na string %s: ", letra, str);
-    for(i=0; i<tamanho_vetor; i++){
-        printf("%d ", posicoes[i]);
-    }
-    printf("\nTamanho do vetor: %d\n", tamanho_vetor);
-
-    return 0;
+	return 0;
 }
 
-int* ret_vetor(char* string, char letra, int *qtd_letras){
-    int *v = NULL, cont = 0, i;
-
-    for(i=0; string[i]!='\0'; i++){
-        if (string[i] == letra){
-            cont++;
-            v = (int*)realloc(v, cont*sizeof(int));
-            v[cont-1] = i;
-        }
-    }
-
-    *qtd_letras = cont;
-    return v;
+void retorna_vetor(char* str, char let, int *pos, int *cont){
+	int i, c=0;
+	
+	for(i=0; i<strlen(str); i++){
+		if(let == *(str+i)){  
+			*(pos+c) = i; 
+			c++; 
+		}
+	}
+	*cont = c;
 }
