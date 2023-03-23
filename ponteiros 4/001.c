@@ -21,7 +21,7 @@ int main() {
 }
 
 int* ler_vetor(int qtd) {
-	int i;
+    int i;
     int *out = (int *) malloc(qtd * sizeof(int));
     memset(out, 0, qtd * sizeof(int));
 
