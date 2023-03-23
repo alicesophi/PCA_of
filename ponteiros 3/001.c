@@ -1,10 +1,3 @@
-/*Faça um programa que calcula a média e o desvio padrão das notas de uma turma;
-- O programa deve solicitar no início a quantidade de alunos na turma e alocar dinamicamente um vetor de float onde as notas dos alunos 
-digitadas devem ser armazenadas;
-- Você deve criar uma função “mediaDesvio” para calcular a média e o desvio padrão e retornar estes valores através de parâmetros passados 
-por referência (ponteiros). A função recebe como parâmetro o ponteiro para o vetor, a quantidade de elementos no vetor, e dois ponteiros: 
-media e desvio onde deve guardar os resultados;*/
-
 #include <stdio.h>
 #include <math.h>
 
