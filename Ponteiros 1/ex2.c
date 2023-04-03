@@ -17,7 +17,7 @@ int main(){
 	
 	for(i=0; i<10; i++){
 		ponteiro = encontra(&v[i], &v[i]);
-		if(*ponteiro != NULL){
+		if(ponteiro != NULL){
 			printf("2 foi encontrado no endereço: %d\n", ponteiro);
 		}
 	}
@@ -28,8 +28,8 @@ int *encontra(int *endInicial, int *endFinal){
 	int *i;
 	
 	for(i=endInicial; i<edFinal; i++){
-		if(i==2){
-			return *i;
+		if(*i==2){
+			return i;
 		}
 	}
 	return NULL;
